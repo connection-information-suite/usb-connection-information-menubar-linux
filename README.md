@@ -20,7 +20,7 @@ The application appears as a USB icon in your system tray. Clicking on it reveal
 ### From Debian Package (.deb)
 
 **Free Download:**
-1. Download the latest `.deb` package from the [releases page](https://github.com/yourusername/usb-device-monitor/releases)
+1. Download the latest `.deb` package from the [releases page](https://github.com/connection-information-suite/usb-connection-information-menubar-linux/releases)
 2. Install using your package manager:
    ```bash
    sudo dpkg -i usb-device-monitor_*.deb
@@ -189,9 +189,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-- **Issues**: Report bugs and feature requests on [GitHub Issues](https://github.com/yourusername/usb-device-monitor/issues)
-- **Discussions**: Join discussions on [GitHub Discussions](https://github.com/yourusername/usb-device-monitor/discussions)
-- **Email**: Contact the maintainer at your.email@example.com
+- **Issues**: Report bugs and feature requests on [GitHub Issues](https://github.com/connection-information-suite/usb-connection-information-menubar-linux/issues)
+- **Discussions**: Join discussions on [GitHub Discussions](https://github.com/connection-information-suite/usb-connection-information-menubar-linux/discussions)
+- **Email**: Contact the maintainer at support@usbconnectioninformation.com
 
 ## Changelog
 
