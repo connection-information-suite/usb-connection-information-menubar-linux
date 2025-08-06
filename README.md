@@ -2,6 +2,8 @@
 
 A lightweight system tray application that provides a GUI wrapper around the `usb-devices` command, making it easy to monitor USB devices in real-time.
 
+Built to bring the [USB Connection Information](https://apps.apple.com/app/id6747853674) App to Linux
+
 ## Features
 
 - **GUI wrapper for usb-devices**: Provides a user-friendly interface to the powerful `usb-devices` command
