@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=USB Device Monitor
+Comment=Monitor USB devices in system tray
+Exec=usb-device-monitor
+Icon=usb-device-monitor
+Terminal=false
+Categories=System;Monitor;HardwareSettings;
+Keywords=usb;device;monitor;hardware;system;
+StartupNotify=true 
