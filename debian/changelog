@@ -1,0 +1,9 @@
+usb-device-monitor (1.0.0-1) unstable; urgency=medium
+
+  * Initial release
+  * USB device monitoring with system tray integration
+  * Real-time device detection and information display
+  * Support for both AyatanaAppIndicator3 and AppIndicator3
+  * Cross-platform compatibility for Linux systems
+
+ -- Daniel Gauthier <your.email@example.com>  $(date -R) 

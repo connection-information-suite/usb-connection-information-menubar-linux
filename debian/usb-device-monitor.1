@@ -1,0 +1,73 @@
+.TH USB-DEVICE-MONITOR 1 "2024" "USB Device Monitor" "User Commands"
+
+.SH NAME
+usb-device-monitor \- Monitor USB devices in system tray
+
+.SH SYNOPSIS
+.B usb-device-monitor
+[\fIOPTIONS\fR]
+
+.SH DESCRIPTION
+.B usb-device-monitor
+is a system tray application that monitors USB devices in real-time and displays detailed information about connected devices.
+
+The application runs in the background and shows an icon in the system tray. Clicking on the icon reveals a menu with all connected USB devices and their details.
+
+.SH FEATURES
+.TP
+.B Real-time monitoring
+Automatically detects when USB devices are connected or disconnected
+.TP
+.B Detailed information
+Shows manufacturer, product name, serial number, USB version, speed, and power consumption
+.TP
+.B System tray integration
+Runs unobtrusively in the system tray
+.TP
+.B Cross-platform
+Works on Linux systems with GTK3 and AppIndicator support
+
+.SH OPTIONS
+Currently no command line options are supported.
+
+.SH DEPENDENCIES
+.TP
+.B Python 3.8+
+Required for running the application
+.TP
+.B PyGObject
+For GTK3 integration
+.TP
+.B AppIndicator3 or AyatanaAppIndicator3
+For system tray functionality
+.TP
+.B usbutils
+For USB device information parsing
+
+.SH FILES
+.TP
+.B /usr/bin/usb-device-monitor
+The main executable
+.TP
+.B /usr/share/applications/usb-device-monitor.desktop
+Desktop entry file
+.TP
+.B /usr/share/icons/hicolor/scalable/apps/usb-device-monitor.svg
+Application icon
+
+.SH EXAMPLES
+.TP
+.B Start the application:
+usb-device-monitor
+.TP
+.B Add to startup applications:
+Add usb-device-monitor to your desktop environment's startup applications
+
+.SH BUGS
+Report bugs to: https://github.com/yourusername/usb-device-monitor/issues
+
+.SH AUTHOR
+Written by Daniel Gauthier <your.email@example.com>
+
+.SH COPYRIGHT
+Copyright © 2025 Daniel Gauthier. This is free software; see the source for copying conditions. 
