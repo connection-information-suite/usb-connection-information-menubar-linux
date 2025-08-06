@@ -2,8 +2,6 @@
 
 A lightweight system tray application that provides a GUI wrapper around the `usb-devices` command, making it easy to monitor USB devices in real-time.
 
-![USB Device Monitor](debian/usb-device-monitor.svg)
-
 Built to bring the [USB Connection Information](https://apps.apple.com/app/id6747853674) Mac App to Linux
 
 ## Features
