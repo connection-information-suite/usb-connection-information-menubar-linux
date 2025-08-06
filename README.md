@@ -2,6 +2,8 @@
 
 A lightweight system tray application that provides a GUI wrapper around the `usb-devices` command, making it easy to monitor USB devices in real-time.
 
+![USB Device Monitor](debian/usb-device-monitor.svg)
+
 Built to bring the [USB Connection Information](https://apps.apple.com/app/id6747853674) Mac App to Linux
 
 ## Features
@@ -16,6 +18,16 @@ Built to bring the [USB Connection Information](https://apps.apple.com/app/id674
 The application appears as a USB icon in your system tray. Clicking on it reveals a menu with all connected USB devices and their details - essentially a GUI version of running `usb-devices` in the terminal.
 
 ## Installation
+
+### From Debian Package (.deb)
+
+**Free Download:**
+1. Download the latest `.deb` package from the [releases page](https://github.com/yourusername/usb-device-monitor/releases)
+2. Install using your package manager:
+   ```bash
+   sudo dpkg -i usb-device-monitor_*.deb
+   sudo apt-get install -f  # Install any missing dependencies
+   ```
 
 ### From Source
 
