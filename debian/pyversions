@@ -1,0 +1,5 @@
+#!/bin/bash
+# pyversions script for Debian build
+# This script returns the supported Python versions
+
+echo "3.8 3.9 3.10 3.11"
