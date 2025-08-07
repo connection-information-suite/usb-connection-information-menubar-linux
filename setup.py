@@ -41,6 +41,8 @@ setup(
         'dev': [
             'pytest>=6.0',
             'flake8>=3.8',
+            'wheel>=0.37.0',
+            'setuptools>=45.0.0',
         ],
     },
     entry_points={
