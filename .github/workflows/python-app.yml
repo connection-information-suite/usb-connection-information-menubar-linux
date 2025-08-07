@@ -146,6 +146,6 @@ jobs:
         name: build-artifacts
         path: |
           dist/
-          *.deb
-          *.buildinfo
-          *.changes
+          ../*.deb
+          ../*.buildinfo
+          ../*.changes
