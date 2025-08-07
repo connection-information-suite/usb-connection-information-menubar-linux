@@ -138,7 +138,12 @@ jobs:
         echo '#!/bin/bash' | sudo tee /usr/bin/pyversions
         echo 'echo "3.8 3.9 3.10 3.11"' | sudo tee -a /usr/bin/pyversions
         sudo chmod +x /usr/bin/pyversions
+        # Build package and copy artifacts to current directory
         dpkg-buildpackage -us -uc -b
+        # Copy any generated files from parent directory to current directory
+        cp ../*.deb . 2>/dev/null || true
+        cp ../*.buildinfo . 2>/dev/null || true
+        cp ../*.changes . 2>/dev/null || true
     
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
@@ -146,6 +151,6 @@ jobs:
         name: build-artifacts
         path: |
           dist/
-          ../*.deb
-          ../*.buildinfo
-          ../*.changes
+          *.deb
+          *.buildinfo
+          *.changes
