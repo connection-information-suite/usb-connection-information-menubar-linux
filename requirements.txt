@@ -1,1 +1,3 @@
-PyGObject>=3.36.0 
+# PyGObject>=3.36.0
+# Note: In CI environments, PyGObject is installed via system packages
+# This requirements.txt is for development environments 
