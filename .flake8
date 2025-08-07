@@ -10,11 +10,10 @@ exclude =
     venv,
     .eggs
 ignore = 
-    E203,  # whitespace before ':'
-    E501,  # line too long (handled by max-line-length)
-    W503,  # line break before binary operator
-    F401,  # imported but unused (for __init__.py files)
-    F403,  # wildcard import
-    F405   # name may be undefined, or defined from star imports
+    E203,
+    W503,
+    F401,
+    F403,
+    F405
 per-file-ignores =
     __init__.py:F401
