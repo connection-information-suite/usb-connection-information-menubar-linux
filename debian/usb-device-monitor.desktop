@@ -1,11 +1,12 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=USB Device Monitor
+Name=USB Connection Information
+GenericName=USB Device Monitor
 Comment=Monitor USB devices in system tray
-Exec=usb-device-monitor
-Icon=usb-device-monitor
+Exec=usb-connection-information
+Icon=usb-connection-information
 Terminal=false
-Categories=System;Monitor;HardwareSettings;
-Keywords=usb;device;monitor;hardware;system;
+Categories=System;Monitor;HardwareSettings;Utility;
+Keywords=usb;device;monitor;hardware;system;connection;information;
 StartupNotify=true 

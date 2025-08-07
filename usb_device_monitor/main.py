@@ -127,7 +127,7 @@ class UsbMonitor(threading.Thread):
 class UsbMenuApp:
     def __init__(self):
         # Unique ID for the app indicator
-        self.app_id = 'usb-device-menu'
+        self.app_id = 'usb-connection-information'
         # Use a standard system icon for USB
         self.icon = 'drive-removable-media-usb'
         

@@ -1,4 +1,4 @@
-# USB Device Monitor
+# USB Connection Information
 
 A lightweight system tray application that provides a GUI wrapper around the `usb-devices` command, making it easy to monitor USB devices in real-time.
 
@@ -23,7 +23,7 @@ The application appears as a USB icon in your system tray. Clicking on it reveal
 1. Download the latest `.deb` package from the [releases page](https://github.com/connection-information-suite/usb-connection-information-menubar-linux/releases)
 2. Install using your package manager:
    ```bash
-   sudo dpkg -i usb-device-monitor_*.deb
+   sudo dpkg -i usb-connection-information_*.deb
    sudo apt-get install -f  # Install any missing dependencies
    ```
 
@@ -64,7 +64,7 @@ sudo dnf install python3 python3-pip python3-gobject gtk3 libappindicator-gtk3 u
 
 3. Run the application:
    ```bash
-   usb-device-monitor
+   usb-connection-information
    ```
 
 ## Usage
@@ -73,8 +73,10 @@ sudo dnf install python3 python3-pip python3-gobject gtk3 libappindicator-gtk3 u
 
 Simply run:
 ```bash
-usb-device-monitor
+usb-connection-information
 ```
+
+Or launch it from your applications menu by searching for "USB Connection Information".
 
 The application will start and appear in your system tray.
 
@@ -90,6 +92,14 @@ The application will start and appear in your system tray.
    - Speed
    - Power consumption
 4. **Quit**: Use the "Quit" option in the menu to exit the application
+
+### Application Launcher
+
+The application includes a desktop launcher that will appear in your "Show Applications" menu. After installation, you can:
+
+1. **Launch from Applications Menu**: Click on "Show Applications" (usually the 9-dot grid icon) and search for "USB Connection Information"
+2. **Add to Favorites**: Right-click on the launcher and select "Add to Favorites" for quick access
+3. **Pin to Dock**: Drag the launcher to your dock/panel for easy access
 
 ### Auto-start on Boot
 

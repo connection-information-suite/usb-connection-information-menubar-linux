@@ -11,7 +11,7 @@ def read_readme():
     return "USB Device Monitor - A system tray application for monitoring USB devices"
 
 setup(
-    name="usb-device-monitor",
+    name="usb-connection-information",
     version="1.0.0",
     author="Daniel Gauthier",
     author_email="dan@usbconnectioninformation.com",
@@ -47,7 +47,7 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "usb-device-monitor=usb_device_monitor.main:main",
+            "usb-connection-information=usb_device_monitor.main:main",
         ],
     },
     include_package_data=True,
