@@ -6,4 +6,4 @@ usb-device-monitor (1.0.0-1) unstable; urgency=medium
   * Support for both AyatanaAppIndicator3 and AppIndicator3
   * Cross-platform compatibility for Linux systems
 
- -- Daniel Gauthier <dan@usbconnectioninformation.com>  $(date -R) 
+ -- Daniel Gauthier <dan@usbconnectioninformation.com>  Mon, 06 Aug 2024 12:00:00 +0000 
