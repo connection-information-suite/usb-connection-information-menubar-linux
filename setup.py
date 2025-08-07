@@ -14,11 +14,11 @@ setup(
     name="usb-device-monitor",
     version="1.0.0",
     author="Daniel Gauthier",
-    author_email="your.email@example.com",
+    author_email="dan@usbconnectioninformation.com",
     description="A system tray application for monitoring USB devices in real-time",
     long_description=read_readme(),
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/usb-device-monitor",
+    url="https://github.com/connection-information-suite/usb-connection-information-menubar-linux",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -37,6 +37,12 @@ setup(
     install_requires=[
         "PyGObject>=3.36.0",
     ],
+    extras_require={
+        'dev': [
+            'pytest>=6.0',
+            'flake8>=3.8',
+        ],
+    },
     entry_points={
         "console_scripts": [
             "usb-device-monitor=usb_device_monitor.main:main",

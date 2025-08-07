@@ -53,8 +53,8 @@ sudo dnf install python3 python3-pip python3-gobject gtk3 libappindicator-gtk3 u
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/usb-device-monitor.git
-   cd usb-device-monitor
+   git clone https://github.com/connection-information-suite/usb-connection-information-menubar-linux.git
+   cd usb-connection-information-menubar-linux
    ```
 
 2. Install the Python package:
