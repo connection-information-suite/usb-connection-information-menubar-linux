@@ -17,6 +17,7 @@ override_dh_auto_install:
 	mkdir -p debian/usb-device-monitor/usr/share/man/man1
 	cp debian/usb-device-monitor.1 debian/usb-device-monitor/usr/share/man/man1/
 
-override_dh_fixperms:
-	dh_fixperms
-	chmod 755 debian/usb-device-monitor/usr/bin/usb-device-monitor 
+# Let dh_python3 handle the entry point creation automatically
+# override_dh_fixperms:
+# 	dh_fixperms
+# 	chmod 755 debian/usb-device-monitor/usr/bin/usb-device-monitor 
