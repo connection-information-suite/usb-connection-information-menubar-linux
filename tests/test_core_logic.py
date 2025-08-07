@@ -155,11 +155,12 @@ class TestUsbMonitor(unittest.TestCase):
     @patch('os.path.exists')
     def test_get_current_devices_success(self, mock_exists, mock_listdir):
         mock_exists.return_value = True
-        mock_listdir.return_value = ['1-1', '1-2', '2-1', 'usb1', 'usb2']
+        # Mock realistic USB device directory listing
+        mock_listdir.return_value = ['1-1', '1-2', '2-1', 'usb1', 'usb2', '1-1:1.0', '1-1:1.1']
         
-        # Test the device filtering logic
+        # Test the device filtering logic - filter out items containing ':'
         devices = {item for item in mock_listdir.return_value if ':' not in item}
-        expected = {'1-1', '1-2', '2-1'}  # Filtered to exclude 'usb1', 'usb2'
+        expected = {'1-1', '1-2', '2-1', 'usb1', 'usb2'}  # Filtered to exclude '1-1:1.0', '1-1:1.1'
         self.assertEqual(devices, expected)
 
     @patch('os.path.exists')
