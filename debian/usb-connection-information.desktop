@@ -9,4 +9,4 @@ Icon=usb-connection-information
 Terminal=false
 Categories=System;Monitor;HardwareSettings;Utility;
 Keywords=usb;device;monitor;hardware;system;connection;information;
-StartupNotify=true 
+StartupNotify=true

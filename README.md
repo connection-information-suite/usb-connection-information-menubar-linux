@@ -109,14 +109,14 @@ To automatically start the application when you log in:
 1. Open "Settings" → "Applications" → "Startup Applications"
 2. Click "Add" and enter:
    - Name: USB Device Monitor
-   - Command: `usb-device-monitor`
+   - Command: `usb-connection-information`
 
 **KDE:**
 1. Open "System Settings" → "Startup and Shutdown" → "Autostart"
-2. Click "Add Program" and select `usb-device-monitor`
+2. Click "Add Program" and select `usb-connection-information`
 
 **Other Desktop Environments:**
-Add `usb-device-monitor` to your desktop environment's startup applications list.
+Add `usb-connection-information` to your desktop environment's startup applications list.
 
 ### Common Issues
 
@@ -125,10 +125,10 @@ Add `usb-device-monitor` to your desktop environment's startup applications list
   ```bash
   # Ubuntu/Debian
   sudo apt install gir1.2-ayatanaappindicator3-0.1
-  
+
   # Arch Linux
   sudo pacman -S libayatana-appindicator
-  
+
   # Fedora
   sudo dnf install libappindicator-gtk3
   ```
@@ -163,26 +163,6 @@ python3 -u usb_device_monitor/main.py
 
 ## Development
 
-### Project Structure (Work in Progress)
-
-```
-usb-device-monitor/
-├── usb_device_monitor/
-│   ├── __init__.py
-│   └── main.py
-├── debian/
-│   ├── control
-│   ├── rules
-│   ├── changelog
-│   ├── compat
-│   ├── usb-device-monitor.desktop
-│   ├── usb-device-monitor.1
-│   └── usb-device-monitor.svg
-├── setup.py
-├── requirements.txt
-└── README.md
-```
-
 ### Contributing
 
 1. Fork the repository
@@ -203,18 +183,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Discussions**: Join discussions on [GitHub Discussions](https://github.com/connection-information-suite/usb-connection-information-menubar-linux/discussions)
 - **Email**: Contact the maintainer at support@usbconnectioninformation.com
 
-## Changelog
-
-### Version 1.0.0
-- Initial release
-- USB device monitoring with system tray integration
-- Real-time device detection and information display
-- Support for both AyatanaAppIndicator3 and AppIndicator3
-- Cross-platform compatibility for Linux systems
-
 ## Acknowledgments
 
 - Built with Python and GTK3
 - Uses PyGObject for GTK bindings
 - AppIndicator3/AyatanaAppIndicator3 for system tray integration
-- `usbutils` package for the `usb-devices` command that provides all the device information 
+- `usbutils` package for the `usb-devices` command that provides all the device information

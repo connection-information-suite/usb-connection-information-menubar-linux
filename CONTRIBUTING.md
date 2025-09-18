@@ -49,7 +49,7 @@ sudo dnf install python3 python3-pip python3-gobject gtk3 libappindicator-gtk3 u
 
 3. Run the application:
    ```bash
-   usb-device-monitor
+   usb-connection-information
    ```
 
 ## Code Style

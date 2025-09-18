@@ -12,7 +12,7 @@ A clear and concise description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
-1. Run 'usb-device-monitor'
+1. Run 'usb-connection-information'
 2. Connect/disconnect a USB device
 3. See error
 
