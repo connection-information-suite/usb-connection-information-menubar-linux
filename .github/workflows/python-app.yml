@@ -37,6 +37,8 @@ jobs:
           pkg-config \
           build-essential \
           gobject-introspection \
+          gir1.2-introspection \
+          libgirepository-1.0-1 \
           libffi-dev \
           meson \
           ninja-build
