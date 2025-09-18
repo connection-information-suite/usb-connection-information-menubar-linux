@@ -40,6 +40,8 @@ jobs:
     - name: Install dependencies
       run: |
         curl -LsSf https://astral.sh/uv/install.sh | sh
+        uv venv .venv
+        source .venv/bin/activate
         uv pip install hatchling
         uv pip install .[dev]
         # Install PyGObject from system package manager to avoid build issues

@@ -26,6 +26,8 @@ jobs:
     - name: Install Python dependencies
       run: |
         curl -LsSf https://astral.sh/uv/install.sh | sh
+        uv venv .venv
+        source .venv/bin/activate
         uv pip install hatchling
         uv pip install .[dev]
         # Note: We don't need PyGObject for core logic tests
