@@ -17,6 +17,9 @@ jobs:
         python-version: ["3.8", "3.9", "3.10", "3.11"]
 
     steps:
+    - name: Verify girepository-2.0 presence
+      run: |
+        pkg-config --exists girepository-2.0 && echo "girepository-2.0 found" || (echo "girepository-2.0 NOT found" && exit 1)
     - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
