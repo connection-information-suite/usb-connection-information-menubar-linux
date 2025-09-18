@@ -18,12 +18,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-
     - name: Install system dependencies
       run: |
         sudo apt-get update
@@ -52,7 +50,6 @@ jobs:
         export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig"
         export GI_TYPELIB_PATH="/usr/lib/x86_64-linux-gnu/girepository-1.0"
         export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
-
     - name: Verify dependencies
       run: |
         echo "Checking Cairo installation..."
@@ -82,7 +79,6 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: "3.11"
-
     - name: Install system dependencies
       run: |
         sudo apt-get update
@@ -104,20 +100,17 @@ jobs:
           python3-setuptools \
           python3-dev \
           python3-venv
-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install wheel setuptools
         # Install PyGObject from system package manager to avoid build issues
         # The requirements.txt PyGObject is for development, but we use system packages in CI
-
     - name: Set up environment
       run: |
         export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig"
         export GI_TYPELIB_PATH="/usr/lib/x86_64-linux-gnu/girepository-1.0"
         export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
-
     - name: Verify dependencies
       run: |
         echo "Checking Cairo installation..."
@@ -144,7 +137,6 @@ jobs:
         cp ../*.deb . 2>/dev/null || true
         cp ../*.buildinfo . 2>/dev/null || true
         cp ../*.changes . 2>/dev/null || true
-
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:

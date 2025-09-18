@@ -80,10 +80,6 @@ We follow responsible disclosure practices:
 - **Primary**: dan@usbconnectioninformation.com
 - **Backup**: Create a private GitHub issue with the `[SECURITY]` prefix
 
-## Bug Bounty
-
-Currently, we do not offer a formal bug bounty program. However, we appreciate security researchers who report vulnerabilities and will acknowledge their contributions in our security advisories.
-
 ## Security Updates
 
 Security updates will be released as patch versions (e.g., 1.0.1, 1.0.2) and will be clearly marked as security updates in the release notes.
