@@ -48,6 +48,9 @@ jobs:
 
     - name: Install dependencies
       run: |
+        # Install pre-commit using pip first since we need it globally
+        python -m pip install pre-commit
+        # Install uv and set up virtual environment
         curl -LsSf https://astral.sh/uv/install.sh | sh
         uv venv .venv
         source .venv/bin/activate
