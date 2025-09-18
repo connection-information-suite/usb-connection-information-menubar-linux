@@ -35,7 +35,11 @@ jobs:
           libgirepository1.0-dev \
           libgtk-3-dev \
           pkg-config \
-          build-essential
+          build-essential \
+          gobject-introspection \
+          libffi-dev \
+          meson \
+          ninja-build
 
     - name: Install dependencies
       run: |
@@ -95,6 +99,10 @@ jobs:
           libgtk-3-dev \
           pkg-config \
           build-essential \
+          gobject-introspection \
+          libffi-dev \
+          meson \
+          ninja-build \
           devscripts \
           debhelper \
           dh-python \
