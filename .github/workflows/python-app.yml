@@ -39,6 +39,9 @@ jobs:
           gobject-introspection \
           gir1.2-introspection \
           libgirepository-1.0-1 \
+          gir1.2-gobject-2.0 \
+          libgirepository-2.0-1 \
+          libgirepository-2.0-dev \
           libffi-dev \
           meson \
           ninja-build
@@ -48,16 +51,27 @@ jobs:
         curl -LsSf https://astral.sh/uv/install.sh | sh
         uv venv .venv
         source .venv/bin/activate
-        uv pip install hatchling
+        # Configure pkg-config for the virtual environment
+        export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig:/usr/lib/pkgconfig"
+        # Install build dependencies first
+        uv pip install setuptools wheel build hatchling pycairo
+        # Verify PyGObject dependencies
+        pkg-config --exists gobject-introspection-1.0 && echo "GObject Introspection found" || echo "GObject Introspection not found"
+        # Install the project and its dependencies
         uv pip install .[dev]
-        # Install PyGObject from system package manager to avoid build issues
-        # PyGObject is installed via system packages in CI
 
     - name: Set up environment
       run: |
-        export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig"
-        export GI_TYPELIB_PATH="/usr/lib/x86_64-linux-gnu/girepository-1.0"
-        export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
+        export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig:/usr/lib/pkgconfig"
+        export GI_TYPELIB_PATH="/usr/lib/x86_64-linux-gnu/girepository-1.0:/usr/lib/girepository-1.0"
+        export LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:/usr/lib:$LD_LIBRARY_PATH"
+        # Ensure pkg-config can find girepository-2.0
+        echo "Checking for girepository-2.0..."
+        pkg-config --cflags --libs gobject-introspection-1.0 || echo "gobject-introspection-1.0 not found"
+        pkg-config --cflags --libs girepository-2.0 || echo "girepository-2.0 not found"
+        # Show where pkg-config is looking
+        echo "PKG_CONFIG_PATH=$PKG_CONFIG_PATH"
+        ls -l /usr/lib/x86_64-linux-gnu/pkgconfig/girepository-2.0.pc || echo "girepository-2.0.pc not found in expected location"
     - name: Verify dependencies
       run: |
         echo "Checking Cairo installation..."
@@ -104,6 +118,9 @@ jobs:
           gobject-introspection \
           gir1.2-introspection \
           libgirepository-1.0-1 \
+          gir1.2-gobject-2.0 \
+          libgirepository-2.0-1 \
+          libgirepository-2.0-dev \
           libffi-dev \
           meson \
           ninja-build \
