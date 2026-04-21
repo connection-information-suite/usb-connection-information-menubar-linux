@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=USB Connection Information
-GenericName=USB Device Monitor
+GenericName=USB Connection Information
 Comment=Monitor USB devices in system tray
 Exec=usb-connection-information
 Icon=usb-connection-information

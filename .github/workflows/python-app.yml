@@ -14,13 +14,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11"]
+        python-version: ["3.12"]
 
     steps:
     - name: Verify girepository-2.0 presence
       run: |
         pkg-config --exists girepository-2.0 && echo "girepository-2.0 found" || (echo "girepository-2.0 NOT found" && exit 1)
     - uses: actions/checkout@v4
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v5
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
@@ -28,7 +30,7 @@ jobs:
     - name: Install system dependencies for PyGObject
       run: |
         sudo apt-get update
-        sudo apt-get install -y libgirepository1.0-dev libglib2.0-dev pkg-config
+        sudo apt-get install -y libgirepository-2.0-dev libglib2.0-dev pkg-config
     - name: Install additional system dependencies
       run: |
         sudo apt-get install -y \
@@ -52,16 +54,12 @@ jobs:
 
     - name: Install dependencies
       run: |
-        # Install pre-commit using pip first since we need it globally
-        python -m pip install pre-commit
-        # Install uv and set up virtual environment
-        curl -LsSf https://astral.sh/uv/install.sh | sh
         uv venv .venv
         source .venv/bin/activate
         # Configure pkg-config for the virtual environment
         export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig:/usr/lib/pkgconfig"
         # Install build dependencies first
-        uv pip install setuptools wheel build hatchling pycairo
+        uv pip install pycairo
         # Verify PyGObject dependencies
         pkg-config --exists gobject-introspection-1.0 && echo "GObject Introspection found" || echo "GObject Introspection not found"
         # Install the project and its dependencies
@@ -86,16 +84,16 @@ jobs:
         echo "Checking GTK installation..."
         pkg-config --exists gtk+-3.0 && echo "GTK3 found" || echo "GTK3 not found"
         echo "Checking PyGObject..."
-        python3 -c "import gi; print('PyGObject available')" || echo "PyGObject not available"
+        uv run python3 -c "import gi; print('PyGObject available')" || echo "PyGObject not available"
 
     - name: Run pre-commit checks
       run: |
-        pre-commit run --all-files
+        uvx pre-commit run --all-files
 
     - name: Test with pytest
       run: |
         # Try pytest first, fallback to our test runner if pytest is not available
-        pytest tests/test_core_logic.py -v --tb=short || python test_runner.py || echo "Tests failed - this is expected in CI environment"
+        uv run pytest tests/test_core_logic.py -v --tb=short || uv run python test_runner.py || echo "Tests failed - this is expected in CI environment"
 
   build:
     runs-on: ubuntu-latest
@@ -104,10 +102,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v5
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: "3.11"
+        python-version: "3.12"
     - name: Install system dependencies
       run: |
         sudo apt-get update
@@ -118,7 +119,7 @@ jobs:
           gir1.2-ayatanaappindicator3-0.1 \
           usbutils \
           libcairo2-dev \
-          libgirepository1.0-dev \
+          libgirepository-2.0-dev \
           libgtk-3-dev \
           pkg-config \
           build-essential \
@@ -137,12 +138,6 @@ jobs:
           python3-all \
           python3-setuptools \
           python3-venv
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install wheel setuptools
-        # Install PyGObject from system package manager to avoid build issues
-        # The requirements.txt PyGObject is for development, but we use system packages in CI
     - name: Set up environment
       run: |
         export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig"
@@ -159,14 +154,14 @@ jobs:
 
     - name: Build package
       run: |
-        python setup.py sdist bdist_wheel
+        uv build
 
     - name: Build Debian package
       run: |
         chmod +x debian/rules
         # Create pyversions command that dh-python expects
         echo '#!/bin/bash' | sudo tee /usr/bin/pyversions
-        echo 'echo "3.8 3.9 3.10 3.11"' | sudo tee -a /usr/bin/pyversions
+        echo 'echo "3.12"' | sudo tee -a /usr/bin/pyversions
         sudo chmod +x /usr/bin/pyversions
         # Build package and copy artifacts to current directory
         dpkg-buildpackage -us -uc -b

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Simple test runner for the USB Device Monitor core logic tests.
+Simple test runner for the USB Connection Information core logic tests.
 This script runs the tests without requiring pytest or GTK dependencies.
 """
 
@@ -36,7 +36,7 @@ def run_tests():
 
 
 if __name__ == "__main__":
-    print("Running USB Device Monitor Core Logic Tests...")
+    print("Running USB Connection Information Core Logic Tests...")
     print("=" * 50)
 
     exit_code = run_tests()

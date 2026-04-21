@@ -20,9 +20,9 @@ class TestBasicFunctionality(unittest.TestCase):
 
     def test_string_operations(self):
         """Test basic string operations"""
-        test_string = "USB Device Monitor"
+        test_string = "USB Connection Information"
         self.assertIn("USB", test_string)
-        self.assertEqual(len(test_string), 18)
+        self.assertEqual(len(test_string), 26)
         self.assertTrue(test_string.startswith("USB"))
 
     def test_list_operations(self):

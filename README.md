@@ -36,17 +36,17 @@ Install the required system dependencies:
 **Ubuntu/Debian:**
 ```bash
 sudo apt update
-sudo apt install python3 python3-pip python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-ayatanaappindicator3-0.1 usbutils
+sudo apt install python3 python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-ayatanaappindicator3-0.1 libgirepository-2.0-dev usbutils
 ```
 
 **Arch Linux:**
 ```bash
-sudo pacman -S python python-pip python-gobject gtk3 libayatana-appindicator usbutils
+sudo pacman -S python python-gobject gtk3 libayatana-appindicator usbutils
 ```
 
 **Fedora:**
 ```bash
-sudo dnf install python3 python3-pip python3-gobject gtk3 libappindicator-gtk3 usbutils
+sudo dnf install python3 python3-gobject gtk3 libappindicator-gtk3 usbutils
 ```
 
 #### Installation Steps
@@ -57,12 +57,19 @@ sudo dnf install python3 python3-pip python3-gobject gtk3 libappindicator-gtk3 u
    cd usb-connection-information-menubar-linux
    ```
 
-2. Install the Python package:
+2. Install `uv` (if not already installed):
    ```bash
-   pip3 install -e .
+   curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
 
-3. Run the application:
+3. Create a virtual environment and install the package (allowing access to system PyGObject):
+   ```bash
+   uv venv --system-site-packages
+   source .venv/bin/activate
+   uv pip install -e .
+   ```
+
+4. Run the application:
    ```bash
    usb-connection-information
    ```
@@ -71,12 +78,12 @@ sudo dnf install python3 python3-pip python3-gobject gtk3 libappindicator-gtk3 u
 
 ### Starting the Application
 
-Simply run:
+Ensure your virtual environment is activated, then run:
 ```bash
 usb-connection-information
 ```
 
-Or launch it from your applications menu by searching for "USB Connection Information".
+Or launch it from your applications menu by searching for "USB Connection Information" (if installed system-wide or desktop file is configured).
 
 The application will start and appear in your system tray.
 
@@ -108,7 +115,7 @@ To automatically start the application when you log in:
 **GNOME:**
 1. Open "Settings" → "Applications" → "Startup Applications"
 2. Click "Add" and enter:
-   - Name: USB Device Monitor
+   - Name: USB Connection Information
    - Command: `usb-connection-information`
 
 **KDE:**
@@ -158,17 +165,44 @@ Add `usb-connection-information` to your desktop environment's startup applicati
 
 Run the application with debug output:
 ```bash
-python3 -u usb_device_monitor/main.py
+python3 -u usb_connection_information/main.py
 ```
 
 ## Development
+
+We use `uv` for dependency management and `pre-commit` for code quality.
+
+### Setup Development Environment
+
+1. Clone the repository and install `uv`:
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
+2. Create a virtual environment with system site packages (for PyGObject):
+   ```bash
+   uv venv --system-site-packages
+   source .venv/bin/activate
+   ```
+3. Install development dependencies:
+   ```bash
+   uv pip install -e ".[dev]"
+   ```
+4. Install and run pre-commit hooks:
+   ```bash
+   uvx pre-commit install
+   uvx pre-commit run --all-files
+   ```
+5. Run tests:
+   ```bash
+   uv run pytest
+   ```
 
 ### Contributing
 
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature-name`
 3. Make your changes
-4. Test thoroughly
+4. Ensure tests pass and pre-commit hooks succeed
 5. Commit your changes: `git commit -am 'Add feature'`
 6. Push to the branch: `git push origin feature-name`
 7. Submit a pull request

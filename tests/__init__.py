@@ -1,1 +1,1 @@
-# Tests package for USB Device Monitor
+# Tests package for USB Connection Information

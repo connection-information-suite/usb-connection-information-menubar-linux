@@ -1,6 +1,6 @@
-# Contributing to USB Device Monitor
+# Contributing to USB Connection Information
 
-Thank you for your interest in contributing to USB Device Monitor! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to USB Connection Information! This document provides guidelines and information for contributors.
 
 ## Getting Started
 
@@ -21,20 +21,22 @@ Install the required system dependencies:
 **Ubuntu/Debian:**
 ```bash
 sudo apt update
-sudo apt install python3 python3-pip python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-ayatanaappindicator3-0.1 usbutils
+sudo apt install python3 python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-ayatanaappindicator3-0.1 libgirepository-2.0-dev usbutils
 ```
 
 **Arch Linux:**
 ```bash
-sudo pacman -S python python-pip python-gobject gtk3 libayatana-appindicator usbutils
+sudo pacman -S python python-gobject gtk3 libayatana-appindicator usbutils
 ```
 
 **Fedora:**
 ```bash
-sudo dnf install python3 python3-pip python3-gobject gtk3 libappindicator-gtk3 usbutils
+sudo dnf install python3 python3-gobject gtk3 libappindicator-gtk3 usbutils
 ```
 
 ### Installation
+
+We use `uv` for dependency management and `pre-commit` for code quality.
 
 1. Clone the repository:
    ```bash
@@ -42,18 +44,32 @@ sudo dnf install python3 python3-pip python3-gobject gtk3 libappindicator-gtk3 u
    cd usb-connection-information-menubar-linux
    ```
 
-2. Install in development mode:
+2. Install `uv`:
    ```bash
-   pip3 install -e .
+   curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
 
-3. Run the application:
+3. Create a virtual environment and install dependencies in development mode:
+   ```bash
+   uv venv --system-site-packages
+   source .venv/bin/activate
+   uv pip install -e ".[dev]"
+   ```
+
+4. Install pre-commit hooks:
+   ```bash
+   uvx pre-commit install
+   ```
+
+5. Run the application:
    ```bash
    usb-connection-information
    ```
 
 ## Code Style
 
+We use `ruff` for linting and formatting, and `black` for code formatting via `pre-commit`.
+- Ensure your code passes all pre-commit checks: `uvx pre-commit run --all-files`
 - Follow PEP 8 style guidelines
 - Use meaningful variable and function names
 - Add comments for complex logic
@@ -64,11 +80,12 @@ sudo dnf install python3 python3-pip python3-gobject gtk3 libappindicator-gtk3 u
 
 Before submitting a pull request, please:
 
-1. Test the application on different Linux distributions if possible
-2. Verify that USB device detection works correctly
-3. Test the system tray integration
-4. Ensure the application starts and stops cleanly
-5. Check that error handling works as expected
+1. Run the test suite: `uv run pytest`
+2. Test the application on different Linux distributions if possible
+3. Verify that USB device detection works correctly
+4. Test the system tray integration
+5. Ensure the application starts and stops cleanly
+6. Check that error handling works as expected
 
 ## Commit Messages
 
@@ -137,4 +154,4 @@ If you have questions about contributing, please:
 3. Open an issue for specific problems
 4. Contact the maintainer at dan@usbconnectioninformation.com
 
-Thank you for contributing to USB Device Monitor!
+Thank you for contributing to USB Connection Information!

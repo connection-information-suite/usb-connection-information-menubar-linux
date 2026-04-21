@@ -34,5 +34,5 @@ Add any other context about the problem here.
 **Debug output**
 If you ran the application with debug output, please include it here:
 ```bash
-python3 -u usb_device_monitor/main.py
+python3 -u usb_connection_information/main.py
 ```

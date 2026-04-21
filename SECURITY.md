@@ -10,7 +10,7 @@ Use this section to tell people about which versions of your project are current
 
 ## Reporting a Vulnerability
 
-We take security vulnerabilities seriously. If you discover a security vulnerability in USB Device Monitor, please follow these steps:
+We take security vulnerabilities seriously. If you discover a security vulnerability in USB Connection Information, please follow these steps:
 
 ### 1. **DO NOT** create a public GitHub issue
 Security vulnerabilities should be reported privately to prevent potential exploitation.
@@ -18,7 +18,7 @@ Security vulnerabilities should be reported privately to prevent potential explo
 ### 2. Email the security team
 Send an email to **dan@usbconnectioninformation.com** with the following information:
 
-- **Subject**: `[SECURITY] USB Device Monitor - [Brief Description]`
+- **Subject**: `[SECURITY] USB Connection Information - [Brief Description]`
 - **Description**: Detailed description of the vulnerability
 - **Steps to reproduce**: Clear, step-by-step instructions
 - **Impact**: What could happen if this vulnerability is exploited
@@ -45,7 +45,7 @@ Send an email to **dan@usbconnectioninformation.com** with the following informa
 
 ### For Users
 
-1. **Keep updated**: Always use the latest version of USB Device Monitor
+1. **Keep updated**: Always use the latest version of USB Connection Information
 2. **System updates**: Keep your operating system and dependencies updated
 3. **Monitor logs**: Check application logs for unusual activity
 4. **Report issues**: Report any suspicious behavior immediately
@@ -59,7 +59,7 @@ Send an email to **dan@usbconnectioninformation.com** with the following informa
 
 ## Security Features
 
-USB Device Monitor includes the following security features:
+USB Connection Information includes the following security features:
 
 - **No network access**: The application does not connect to the internet
 - **Local only**: All operations are performed locally on your system
@@ -90,4 +90,4 @@ None at this time.
 
 ---
 
-Thank you for helping keep USB Device Monitor secure!
+Thank you for helping keep USB Connection Information secure!
