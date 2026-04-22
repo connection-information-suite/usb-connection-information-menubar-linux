@@ -59,10 +59,7 @@ jobs:
         # Configure pkg-config for the virtual environment
         export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig:/usr/lib/pkgconfig"
         # Install build dependencies first
-        uv pip install pycairo
-        # Verify PyGObject dependencies
         pkg-config --exists gobject-introspection-1.0 && echo "GObject Introspection found" || echo "GObject Introspection not found"
-        # Install the project and its dependencies
         uv pip install .[dev]
 
     - name: Set up environment

@@ -19,9 +19,7 @@ classifiers = [
     "Topic :: System :: Monitoring",
 ]
 
-dependencies = [
-    "PyGObject>=3.36.0",
-]
+dependencies = []
 
 [project.optional-dependencies]
 dev = [
