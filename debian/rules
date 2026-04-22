@@ -7,17 +7,12 @@ override_dh_auto_install:
 	dh_auto_install
 	# Install the desktop file
 	mkdir -p debian/usb-connection-information/usr/share/applications
-	cp debian/usb-connection-information.desktop debian/usb-connection-information/usr/share/applications/
-	
+	cp debian/usb-connection-information.desktop debian/usb-connection-information/usr/share/applications/usb-connection-information.desktop
+
 	# Install the icon
 	mkdir -p debian/usb-connection-information/usr/share/icons/hicolor/scalable/apps
-	cp debian/usb-connection-information.svg debian/usb-connection-information/usr/share/icons/hicolor/scalable/apps/
-	
+	cp debian/usb-connection-information.svg debian/usb-connection-information/usr/share/icons/hicolor/scalable/apps/usb-connection-information.svg
+
 	# Install man page
 	mkdir -p debian/usb-connection-information/usr/share/man/man1
-	cp debian/usb-connection-information.1 debian/usb-connection-information/usr/share/man/man1/
-
-# Let dh_python3 handle the entry point creation automatically
-# override_dh_fixperms:
-# 	dh_fixperms
-# 	chmod 755 debian/usb-connection-information/usr/bin/usb-connection-information 
+	cp debian/usb-connection-information.1 debian/usb-connection-information/usr/share/man/man1/usb-connection-information.1

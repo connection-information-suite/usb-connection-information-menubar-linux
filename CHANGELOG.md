@@ -5,10 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-09-17
+
+### Changed
+- Modernized build system to use `pyproject.toml` instead of `setup.py`
+- Switched to `uv` for faster, more reliable Python package management
+- Replaced manual test verification script with automated pre-commit hooks
+
+### Added
+- Pre-commit hooks for automated code quality checks
+- Ruff linter for enhanced Python code analysis
+- Black code formatter for consistent code style
+- Automated code quality checks in CI pipeline
+
 ## [1.0.0] - 2025-08-06
 
 ### Added
-- Initial release of USB Connection Information
+- Initial release of USB Device Monitor
 - System tray application for monitoring USB devices
 - Real-time device detection and information display
 - Support for both AyatanaAppIndicator3 and AppIndicator3

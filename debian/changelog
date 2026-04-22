@@ -1,4 +1,14 @@
-usb-connection-information (1.0.0-1) unstable; urgency=medium
+usb-connection-information (1.1.0-1) unstable; urgency=medium
+
+  * Update build system to use pyproject.toml
+  * Replace manual test verification with pre-commit hooks
+  * Switch to uv for Python package management
+  * Add modern linting with Ruff and Black
+  * Improve development workflow with automated checks
+
+ -- Daniel Gauthier <dan@usbconnectioninformation.com>  Wed, 17 Sep 2025 12:00:00 +0000
+
+usb-device-monitor (1.0.0-1) unstable; urgency=medium
 
   * Initial release
   * USB device monitoring with system tray integration
@@ -6,4 +16,4 @@ usb-connection-information (1.0.0-1) unstable; urgency=medium
   * Support for both AyatanaAppIndicator3 and AppIndicator3
   * Cross-platform compatibility for Linux systems
 
- -- Daniel Gauthier <dan@usbconnectioninformation.com>  Mon, 06 Aug 2024 12:00:00 +0000 
+ -- Daniel Gauthier <dan@usbconnectioninformation.com>  Mon, 06 Aug 2024 12:00:00 +0000

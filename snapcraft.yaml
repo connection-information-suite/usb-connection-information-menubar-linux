@@ -1,0 +1,34 @@
+name: usb-connection-information
+base: core24
+version: '1.1.0'
+summary: A system tray application for monitoring USB devices in real-time
+description: |
+  A system tray application for monitoring USB devices in real-time.
+  Provides information about connected USB devices including manufacturer,
+  product name, serial number, and more.
+
+grade: stable
+confinement: strict
+
+apps:
+  usb-connection-information:
+    command: bin/usb-connection-information
+    extensions: [gnome]
+    plugs:
+      - home
+      - raw-usb
+      - unity7
+    desktop: debian/usb-connection-information.desktop
+
+parts:
+  usb-connection-information:
+    source: .
+    plugin: python
+    build-packages:
+      - pkg-config
+      - libglib2.0-dev
+      - libgirepository-2.0-dev
+    stage-packages:
+      - libayatana-appindicator3-1
+      - gir1.2-ayatanaappindicator3-0.1
+      - usbutils

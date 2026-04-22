@@ -36,17 +36,17 @@ Install the required system dependencies:
 **Ubuntu/Debian:**
 ```bash
 sudo apt update
-sudo apt install python3 python3-pip python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-ayatanaappindicator3-0.1 usbutils
+sudo apt install python3 python3-gi python3-gi-cairo gir1.2-gtk-3.0 gir1.2-ayatanaappindicator3-0.1 libgirepository-2.0-dev usbutils
 ```
 
 **Arch Linux:**
 ```bash
-sudo pacman -S python python-pip python-gobject gtk3 libayatana-appindicator usbutils
+sudo pacman -S python python-gobject gtk3 libayatana-appindicator usbutils
 ```
 
 **Fedora:**
 ```bash
-sudo dnf install python3 python3-pip python3-gobject gtk3 libappindicator-gtk3 usbutils
+sudo dnf install python3 python3-gobject gtk3 libappindicator-gtk3 usbutils
 ```
 
 #### Installation Steps
@@ -57,12 +57,22 @@ sudo dnf install python3 python3-pip python3-gobject gtk3 libappindicator-gtk3 u
    cd usb-connection-information-menubar-linux
    ```
 
-2. Install the Python package:
+2. Install `uv` (if not already installed):
    ```bash
-   pip3 install -e .
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   source $HOME/.local/bin/env  # or restart your shell
    ```
 
-3. Run the application:
+3. Create a virtual environment and install the package:
+   ```bash
+   uv venv --system-site-packages
+   source .venv/bin/activate
+   uv pip install -e .
+   ```
+   > `--system-site-packages` lets the venv use your system-installed PyGObject/Cairo
+   > instead of trying to compile them from source, which avoids build errors on most distros.
+
+4. Run the application:
    ```bash
    usb-connection-information
    ```
@@ -71,10 +81,12 @@ sudo dnf install python3 python3-pip python3-gobject gtk3 libappindicator-gtk3 u
 
 ### Starting the Application
 
-Simply run:
+Ensure your virtual environment is activated, then run:
 ```bash
 usb-connection-information
 ```
+
+Or launch it from your applications menu by searching for "USB Connection Information" (if installed system-wide or desktop file is configured).
 
 The application will start and appear in your system tray.
 
@@ -90,6 +102,14 @@ The application will start and appear in your system tray.
    - Speed
    - Power consumption
 4. **Quit**: Use the "Quit" option in the menu to exit the application
+
+### Application Launcher
+
+The application includes a desktop launcher that will appear in your "Show Applications" menu. After installation, you can:
+
+1. **Launch from Applications Menu**: Click on "Show Applications" (usually the 9-dot grid icon) and search for "USB Connection Information"
+2. **Add to Favorites**: Right-click on the launcher and select "Add to Favorites" for quick access
+3. **Pin to Dock**: Drag the launcher to your dock/panel for easy access
 
 ### Auto-start on Boot
 
@@ -115,10 +135,10 @@ Add `usb-connection-information` to your desktop environment's startup applicati
   ```bash
   # Ubuntu/Debian
   sudo apt install gir1.2-ayatanaappindicator3-0.1
-  
+
   # Arch Linux
   sudo pacman -S libayatana-appindicator
-  
+
   # Fedora
   sudo dnf install libappindicator-gtk3
   ```
@@ -153,32 +173,39 @@ python3 -u usb_connection_information/main.py
 
 ## Development
 
-### Project Structure (Work in Progress)
+We use `uv` for dependency management and `pre-commit` for code quality.
 
-```
-usb-connection-information/
-├── usb_connection_information/
-│   ├── __init__.py
-│   └── main.py
-├── debian/
-│   ├── control
-│   ├── rules
-│   ├── changelog
-│   ├── compat
-│   ├── usb-connection-information.desktop
-│   ├── usb-connection-information.1
-│   └── usb-connection-information.svg
-├── setup.py
-├── requirements.txt
-└── README.md
-```
+### Setup Development Environment
+
+1. Clone the repository and install `uv`:
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
+2. Create a virtual environment with system site packages (for PyGObject):
+   ```bash
+   uv venv --system-site-packages
+   source .venv/bin/activate
+   ```
+3. Install development dependencies:
+   ```bash
+   uv pip install -e ".[dev]"
+   ```
+4. Install and run pre-commit hooks:
+   ```bash
+   uvx pre-commit install
+   uvx pre-commit run --all-files
+   ```
+5. Run tests:
+   ```bash
+   uv run pytest
+   ```
 
 ### Contributing
 
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature-name`
 3. Make your changes
-4. Test thoroughly
+4. Ensure tests pass and pre-commit hooks succeed
 5. Commit your changes: `git commit -am 'Add feature'`
 6. Push to the branch: `git push origin feature-name`
 7. Submit a pull request
@@ -193,18 +220,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Discussions**: Join discussions on [GitHub Discussions](https://github.com/connection-information-suite/usb-connection-information-menubar-linux/discussions)
 - **Email**: Contact the maintainer at support@usbconnectioninformation.com
 
-## Changelog
-
-### Version 1.0.0
-- Initial release
-- USB device monitoring with system tray integration
-- Real-time device detection and information display
-- Support for both AyatanaAppIndicator3 and AppIndicator3
-- Cross-platform compatibility for Linux systems
-
 ## Acknowledgments
 
 - Built with Python and GTK3
 - Uses PyGObject for GTK bindings
 - AppIndicator3/AyatanaAppIndicator3 for system tray integration
-- `usbutils` package for the `usb-devices` command that provides all the device information 
+- `usbutils` package for the `usb-devices` command that provides all the device information
