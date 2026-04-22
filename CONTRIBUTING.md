@@ -47,6 +47,7 @@ We use `uv` for dependency management and `pre-commit` for code quality.
 2. Install `uv`:
    ```bash
    curl -LsSf https://astral.sh/uv/install.sh | sh
+   source $HOME/.local/bin/env  # or restart your shell
    ```
 
 3. Create a virtual environment and install dependencies in development mode:
@@ -55,6 +56,8 @@ We use `uv` for dependency management and `pre-commit` for code quality.
    source .venv/bin/activate
    uv pip install -e ".[dev]"
    ```
+   > `--system-site-packages` lets the venv use your system-installed PyGObject/Cairo
+   > instead of trying to compile them from source, which avoids build errors on most distros.
 
 4. Install pre-commit hooks:
    ```bash

@@ -60,14 +60,17 @@ sudo dnf install python3 python3-gobject gtk3 libappindicator-gtk3 usbutils
 2. Install `uv` (if not already installed):
    ```bash
    curl -LsSf https://astral.sh/uv/install.sh | sh
+   source $HOME/.local/bin/env  # or restart your shell
    ```
 
-3. Create a virtual environment and install the package (allowing access to system PyGObject):
+3. Create a virtual environment and install the package:
    ```bash
    uv venv --system-site-packages
    source .venv/bin/activate
    uv pip install -e .
    ```
+   > `--system-site-packages` lets the venv use your system-installed PyGObject/Cairo
+   > instead of trying to compile them from source, which avoids build errors on most distros.
 
 4. Run the application:
    ```bash
